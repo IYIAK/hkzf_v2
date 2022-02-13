@@ -1,11 +1,124 @@
 .Index{
-    .search-bar{
+
+    .nav{
         display: flex;
         justify-content: space-around;
-        background-color: #eee;
+        background-color: #fff;
+        padding: 10px 0;
 
-        .search-text {
+
+        .nav-item{
+            text-align: center;
+
+            img {
+                width: 48px;
+            }
+
+            h2 {
+                font-size: 12px;
+                font-weight: normal;
+                margin-top: 4px
+            }
+        }
+    }
+
+    .group{
+        padding: 0 10px;
+        padding-bottom: 10px;
+        overflow: hidden ;
+        background-color: #f5f4f6;
+
+        >.title{
+            padding: 0 20px;
+            font-size: 15px;
             
+
+            .more {
+                float: right;
+                font-weight: normal;
+                color: #838485;
+                font-size: 14px;
+            }
+        }
+
+        .group-item {
+            background-color: #fff;
+            height: 85px;
+            vertical-align: middle;
+            display: flex;
+            justify-content: space-around;
+            // align-items: center;
+            padding: 10px;
+
+
+            .desc {
+                .title{
+                    font-size: 13px;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                }
+    
+                .info{
+                    font-size: 12px;
+                    color:#838485;
+                }
+            }
+
+            img {
+                height: 55px;
+            }
+        }
+
+    }
+
+    .news {
+        padding: 0 5px;
+        background-color: #fff;
+
+        >.title{
+            padding-left: 10px;
+            font-size: 15px;
+            // padding-top: 15px;
+        }
+
+        .news-item{
+            // display: flex;
+            // justify-content: space-between;
+            // height: 120px;
+            // padding: 0 15px 0 15px;
+            // border-bottom: 1px solid #e5e5e5;
+    
+            .imgwrap{
+                height: 90px;
+                width: 120px;
+                float: left;
+                img{
+                    height: 90px;
+                    width: 120px;
+                }
+            }
+    
+            .content{
+                overflow: hidden;
+                height: 90px;
+                padding-left: 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                .title {
+                    margin-top: 0;
+                    font-size: 16px;
+                }
+    
+                .info{
+                    display: flex;
+                    justify-content:space-between;
+                    font-size: 14px;
+                    width: 100%;
+                }
+            }
+    
+    
         }
     }
 }

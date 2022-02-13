@@ -1,0 +1,53 @@
+.login{
+    padding-top:45px;
+
+    form{
+        margin-top: 20px;
+        padding: 0 15px;
+        
+
+        input{
+            display: block;
+            border: 0px;
+            border-bottom: 1px solid #eee;
+            height: 60px;
+            width: 100%;
+            padding: 2px 0;
+            font-size: 17px;
+            margin-bottom: 9px;        
+            outline:none;    
+        }
+
+        button {
+            height: 50px;
+            width: 100%;
+            background-color: #1cb676;
+            border: 0;
+            color: #fff;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        div{
+            height: 30px;
+            color: red;
+            font-size: 14px;
+        }
+
+    }
+
+    .center{
+        width: 100%;
+        text-align: center;
+        margin-top: 25px;
+
+        a{
+            text-decoration: none;
+        }
+    
+    }
+
+
+
+
+}

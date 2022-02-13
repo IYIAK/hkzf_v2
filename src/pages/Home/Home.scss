@@ -1,6 +1,7 @@
 .home{
     padding-bottom: 50px;
     position: relative;
+    // background-color: #f5f4f6;
 }
 
 .home>.iconfont {
@@ -14,5 +15,7 @@
     position: fixed;  /* 加了fixed定位后，元素的层级会比absolute和relative低，也就是低于relative的filterMoreRoot，这样能保证不会压住filterMore */
     bottom: 0;
     width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
   }
   

@@ -36,7 +36,6 @@ export default function Home() {
     const { pathname } = location
 
     return <div className='home'>
-        <div>Home</div>
         <Outlet />
         <TabBar
             activeKey={pathname}
