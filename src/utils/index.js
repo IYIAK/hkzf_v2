@@ -14,7 +14,7 @@ export const getCurrentCity = async () => {
                 try {
                     const cityName = res.name
                     // console.log('当前定位城市名称', cityName)
-                    const result = await axios.get(`http://localhost:8080/area/info?name=${cityName}`)  /* 服务器会返回北上广深之一 */
+                    const result = await axios.get(`http://localhost:2333/area/info?name=${cityName}`)  /* 服务器会返回北上广深之一 */
                     // 存储到本地存储(对象转换为JSON字符串)
                     localStorage.setItem('hkzf_city', JSON.stringify(result.data.body))
                     resolve(result.data.body)

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import SearchHeader from '../../components/SearchHeader/SearchHeader';
-import { API } from "../../utils/api";
+import { API, getCurrentCity } from "../../utils";
 import { BASE_URL } from "../../utils/url";
 
 import { Swiper, Grid, List } from 'antd-mobile'
@@ -17,10 +17,20 @@ import Nav4 from '../../assets/images/nav-4.png'
 import './Index.scss'
 import { useNavigate } from 'react-router-dom';
 
-export default function index() {
+export default function Index() {
+    const [city, setCity] = useState('上海')
+
+    useEffect(() => {
+        getCity()
+    }, [])
+
+    async function getCity() {
+        var city = await getCurrentCity()
+        setCity(city.label)
+    }
 
     return <div className='Index'>
-        <SearchHeader cityName='上海'></SearchHeader>
+        <SearchHeader cityName={city}></SearchHeader>
         <MySwiper></MySwiper>
         <Nav></Nav>
         <Group></Group>
@@ -33,6 +43,7 @@ function MySwiper() {
 
     const [swiper, setSwiper] = useState([])
     const [isSwiperLoaded, setIsSwiperLoaded] = useState(false)
+
 
     var getSwiper = async () => {
         // console.log(123);
@@ -68,8 +79,10 @@ function MySwiper() {
 
     return (<>
         {/* 图片没有加载出来时防止布局错乱，添加一个空的div */}
-        {isSwiperLoaded ? '' : <div style={{ width: '100%', height: 212 }} />}
-        <Swiper autoplay loop>{isSwiperLoaded ? items : ''}</Swiper>
+        {isSwiperLoaded ?
+            <Swiper autoplay loop>{items}</Swiper>
+            : <div style={{ width: '100%', height: 212 }} />}
+
     </>
 
 
@@ -176,7 +189,7 @@ function News() {
                 area: "AREA%7C88cff55c-aaa4-e2e0"
             }
         })
-        console.log(res);
+        // console.log(res);
         setNews(res.data.body)
     }
 

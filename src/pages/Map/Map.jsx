@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { Map } from 'react-bmapgl';
 import ScaleControl from 'react-bmapgl/Control/ScaleControl';
@@ -24,8 +24,24 @@ export default function MapSelect() {
     const [houseList, setHouseList] = useState([])
     const [isHouseListOK, setIsHouseListOK] = useState(false)
 
+    const mapRef = useRef()
+
     useEffect(() => {
-        getData('AREA%7C88cff55c-aaa4-e2e0')
+        const { label, value } = JSON.parse(localStorage.getItem('hkzf_city'))
+        getData(value)
+        const myGeo = new window.BMapGL.Geocoder();
+
+        // 将地图定位到对应城市
+        // 使用百度地图的地址解析功能，地址必须带‘市’字
+        myGeo.getPoint(label + '市', (point) => {
+            if (point) {
+                // console.log(point);
+                //实测，mapRef.current.map才是真正的map对象
+                mapRef.current.map.centerAndZoom(point, 11);
+            } else {
+                alert('您选择的地址没有解析到结果！');
+            }
+        })
 
         return () => {
             Toast.clear()
@@ -45,7 +61,7 @@ export default function MapSelect() {
             })
 
             const res = await API.get(`/area/map?id=${id}`)
-            console.log(res);
+            // console.log(res);
 
             setData(res.data.body)
             setIsDataOK(true)
@@ -185,7 +201,12 @@ export default function MapSelect() {
         <div className='map'>
             <NavHeader>地图选房</NavHeader>
             {/* 这里用的是封装好的react地图组件，但是设计的太诡异了，组件最外层竟然是一个不能设置类名的div，但是style属性就可以修改这个div的css  */}
-            <Map style={{ height: '100%' }} enableDoubleClickZoom enableDragging center={{ lng: 116.402544, lat: 39.928216 }} zoom="11" >
+            <Map
+                style={{ height: '100%' }}
+                enableDragging
+                center={{ lng: 116.402544, lat: 39.928216 }}
+                zoom="11"
+                ref={mapRef}>
                 {/* 比例尺和缩放控件需要单独引入并写为子组件 */}
                 <ScaleControl />
                 {/* <ZoomControl /> */}
