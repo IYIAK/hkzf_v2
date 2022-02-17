@@ -8,6 +8,7 @@ import CityList from "./pages/CityList/CityList";
 import MapSelect from './pages/Map/Map';
 import Search from "./pages/Search/Search";
 import Login from "./pages/Login/Login"
+import HouseDetail from './pages/HouseDetail/HouseDetail'
 
 
 import { Route, Routes, Navigate } from 'react-router-dom';
@@ -29,6 +30,7 @@ export default function App() {
       <Route path='citylist' element={<CityList />}></Route>
       <Route path='search' element={<Search />}></Route>
       <Route path='login' element={<Login></Login>}></Route>
+      <Route path='detail/:id' element={<HouseDetail></HouseDetail>}></Route>
       <Route path="*" element={<Navigate to='home' />} /> {/* 任意不匹配上述路由的url都强制跳转至Home对应的路径 */}
     </Routes>
 

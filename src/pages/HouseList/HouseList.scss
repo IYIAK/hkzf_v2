@@ -1,0 +1,25 @@
+.houselist{
+    height: calc( 100vh - 100px); //计算高度 为什么是减100px我也不知道，但是能用
+
+    .search-box{
+        background-color: #f6f5f6;
+        position: relative;
+        padding: 10px 10px;
+        top:0; //即使覆盖了absolute定位，top依然会生效，所以也要覆盖
+
+        .icon-map{
+            color:#21b97a;
+        }
+    }
+
+    .house {
+        padding: 18px 15px 0 15px;
+    }
+    
+    .loading {
+        line-height: 120px;
+        text-align: center;
+        height: 110px;
+        // background-color: #f6f5f6;
+    }
+}

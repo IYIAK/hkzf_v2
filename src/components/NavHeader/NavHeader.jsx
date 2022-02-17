@@ -14,5 +14,5 @@ export default function NavHeader({ children }) {
 }
 
 NavHeader.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.any.isRequired
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import SearchHeader from '../../components/SearchHeader/SearchHeader';
-import { API, getCurrentCity } from "../../utils";
+import { API } from "../../utils";
 import { BASE_URL } from "../../utils/url";
 
 import { Swiper, Grid, List } from 'antd-mobile'
@@ -18,19 +18,9 @@ import './Index.scss'
 import { useNavigate } from 'react-router-dom';
 
 export default function Index() {
-    const [city, setCity] = useState('上海')
-
-    useEffect(() => {
-        getCity()
-    }, [])
-
-    async function getCity() {
-        var city = await getCurrentCity()
-        setCity(city.label)
-    }
 
     return <div className='Index'>
-        <SearchHeader cityName={city}></SearchHeader>
+        <SearchHeader></SearchHeader>
         <MySwiper></MySwiper>
         <Nav></Nav>
         <Group></Group>
